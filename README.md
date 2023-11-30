@@ -1,5 +1,6 @@
 # 기초 웹 개발론
 기초 웹 개발론의 과제 제출 및 리뷰용 코드 저장소입니다. 
+https://github.com/kakaotrack/basicweb/tree/main
 
 * 과제 제출 일정: 2023-12-11(월) 오후 1시까지
 * 과제 제출 방식: 이 저장소에 브란치를 만들어, 본인의 코드를 추가 후, 풀 리퀘스트(PR, Prull Request)를 보냅니다. 

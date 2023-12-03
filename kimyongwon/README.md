@@ -1,4 +1,4 @@
-# 기초 웹 개발론 2022208020 김용
+# 기초 웹 개발론 2022208020 김용원
 * ****발표 희망****
 * https://github.com/kakaotrack/basicweb
 

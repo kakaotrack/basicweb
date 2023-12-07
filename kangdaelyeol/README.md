@@ -2,7 +2,8 @@
 
 **기초웹개발론 프로젝트**
 
-[Gallague](https://gallague-6e78212e76a0.herokuapp.com/) <- Link
+- [Gallague](https://gallague-6e78212e76a0.herokuapp.com/) <- Link
+- [GitHub](https://github.com/kangdaelyeol/gallague) <- Link
 
 ## Table of Contents
 

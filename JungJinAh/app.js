@@ -98,9 +98,10 @@ class Monster extends GameObject {
     let id = setInterval(() => {
       if (!this.dead) {
         this.y = this.y < HEIGHT ? this.y + 30 : this.y;
+        // 해당 if문이 설정한 height 범위 벗어나면 player 죽이는 코드
         if (this.y >= HEIGHT - this.height) {
-          this.dead = true;
-          eventEmitter.emit("MONSTER_OUT_OF_BOUNDS");
+          // this.dead = true;
+          // eventEmitter.emit("MONSTER_OUT_OF_BOUNDS");
         }
       } else {
         clearInterval(id);
@@ -138,6 +139,7 @@ class Game {
     this.end = false;
     this.ready = false;
 
+    // 어 이거다. 이 부분 코드가 monster가 boundary 범위 밖으로 나가면 player life 감소시키는 부분인거 같은데
     eventEmitter.on(Messages.MONSTER_OUT_OF_BOUNDS, () => {
       hero.dead = true;
     });
@@ -388,6 +390,7 @@ function displayMessage(message, color = "red") {
   ctx.fillText(message, canvas.width / 2, canvas.height / 2);
 }
 
+// monster가 무한하게 스폰되게 하기 위해 수정해야 하는 부분
 function createMonsters(monsterImg) {
   // 98 * 5     canvas.width - (98*5 /2)
   const MONSTER_TOTAL = 5;
@@ -489,13 +492,13 @@ window.onload = async () => {
   heroImgRight = await loadTexture("spaceArt/png/playerRight.png");
   heroImgDamaged = await loadTexture("spaceArt/png/playerDamaged.png");
   monsterImg = await loadTexture("spaceArt/png/enemyShip.png");
-  // meteor 이미지 추가 부분
-  meteorImg = await loadTexture("spaceArt/png/meteorBig.png");
+  meteorImg = await loadTexture("spaceArt/png/meteorBig.png"); // meteor 이미지 추가 부분
   laserRedImg = await loadTexture("spaceArt/png/laserRed.png");
   laserRedShot = await loadTexture("spaceArt/png/laserRedShot.png");
   laserGreenShot = await loadTexture("spaceArt/png/laserGreenShot.png");
   lifeImg = await loadTexture("spaceArt/png/life.png");
 
+  // 처음 시작 화면 canvas 설정 부분
   game.ready = true;
   game.end = true;
   ctx.clearRect(0, 0, canvas.width, canvas.height);

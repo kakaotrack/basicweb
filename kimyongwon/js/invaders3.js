@@ -58,9 +58,11 @@ var star_image5;					//별 이미지 5
 var laser_sound;					//사용자 미사일 발사 소리
 var missle_sound;					//적 미사일 소리
 var explosion_sound;				//폭발 소리
+var crack_sound; //적 피격 소리
 var invader_explosion_sound;		//적기기 파괴 소리
 var play_again_sound;				//게임 재시작 소리
-var win_sound;				//승리 사운드
+var win_sound;        //승리 사운드
+var back_sound				//배경 사운드
 var back_ground_image_search = 0;	//배경 이미지 변환 변수
 var user_laser_num			 = 0;	//사용자 비행기 미사일 개수 제한
 
@@ -114,6 +116,7 @@ function updateGameState() {
     textOverlay.counter = 0;
 	
     win_sound.play();
+    back_sound.pause();
 	
 	//비디오를 꺼내고 재생한다.
 	$("#start_video").show("fast");
@@ -145,6 +148,10 @@ function updateGameState() {
 
   if(textOverlay.counter >= 0 ) {
     textOverlay.counter++;
+  }
+
+  if ((game.state === "playing" || game.state === "start") && !keyboard[32]) {
+    back_sound.play();
   }
 }
 
@@ -225,7 +232,7 @@ function updateInvaderMissiles() {
 	}
 	else
 	{
-		laser.y += 4;
+		laser.y += 6;
 		laser.counter++;
 	}
   }
@@ -440,7 +447,7 @@ function drawInvaders() {
 	//적의 미사일에 맞은 경우 먼저 check 상태로 진입한다. 이곳에서 life 변수를 체크하여 0보다 낮을 경우 hit 상태로 변경시켜준다.
 	//그 외의 경우에는 check 상태의 이미지를 띄운 후 alive 상태로 돌려준다.
     if(invader.state === "check") {
-			invader_explosion_sound.play();
+			crack_sound.play();
 			context.drawImage(hit_invader,invader.x, invader.y, invader.width, invader.height);
 			invader.state = "alive";
 			if(invader.life <= 0)
@@ -449,11 +456,12 @@ function drawInvaders() {
 	
 	//적이 미사일에 맞을 경우
     if(invader.state === "hit") {
-			invader_explosion_sound.play();
+			crack_sound.play();
 			context.drawImage(invaderboom_image,invader.x, invader.y, invader.width, invader.height);
     }
 	//적이 미사일에 맞아 죽을 경우
     if(invader.state === "dead") {
+      invader_explosion_sound.play();
       context.fillStyle = "black";
       context.fillRect(invader.x, invader.y, invader.width, invader.height);
     }
@@ -608,6 +616,7 @@ function updateSpaceship() {
       textOverlay.subtitle = "press space bar to play again";
       textOverlay.counter = 0;			//텍스트 카운트 0
       play_again_sound.play();			//소리재생
+      back_sound.pause();
 	  
 	  // 숨겨진 동영상을 보여준다.
 	  $("#start_video").show("fast");
@@ -904,6 +913,10 @@ function loadResources() {
   document.body.appendChild(invader_explosion_sound);
   invader_explosion_sound.setAttribute("src", "sounds/invader_explosion.wav");
 
+  crack_sound = document.createElement("audio");
+  document.body.appendChild(crack_sound);
+  crack_sound.setAttribute("src", "sounds/crack.wav")
+
   play_again_sound = document.createElement("audio");
   document.body.appendChild(play_again_sound);
   play_again_sound.setAttribute("src", "sounds/darkfactory.ogg");
@@ -911,6 +924,11 @@ function loadResources() {
   win_sound = document.createElement("audio");
   document.body.appendChild(win_sound);
   win_sound.setAttribute("src", "sounds/win.ogg");
+
+  back_sound = document.createElement("audio");
+  document.body.appendChild(back_sound);
+  back_sound.setAttribute("src", "sounds/t.ogg");
+  
 
 }
 $("#start_video").hide("fast");		//초기 실행시 동영상을 감춘다.

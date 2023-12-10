@@ -1,8 +1,19 @@
 # 기초 웹 개발론 2022208020 김용원
 * ****발표 희망****
 * 게임 제목 : Space 1998 (스타크래프트 발매 년도 1998년에 착안)
-* Patch Note 20231210 V.1.15
+* Patch Note 20231210 V.1.16 (12/11 07:40)
 * 달라진 것은 단 하나, 전부입니다.
+
+## 1.14 대비 변경점
+* https://www.sounds-resource.com/pc_computer/starcraftbroodwar
+* (사운드 소스 가져온 웹사이트)
+* 보스 체력 800->200으로 수정
+
+## 1.15 대비 변경점
+* 게임 백그라운드 음악 설정
+* https://downloads.khinsider.com/game-soundtracks/album/starcraft
+* 피격 사운드(장갑판 깨지는 소리) 추가
+* 히드라 공격 투사체 속도 상향
 
 ## 배경
 * 스타크래프트를 좋아하던 세대였으므로 해당 게임을 보고 레이스가 떠오름
@@ -29,7 +40,4 @@ Wraith 피격, 사망 시 적절한 이미지, 사운드 재생
 페이지 구성을 나눠 게임하는 화면과 설명이 적힌 화면이 동시 출력
 화면 좌측 상단 프레임레이트 출력
 
-## 1.14 대비 변경점
-* https://www.sounds-resource.com/pc_computer/starcraftbroodwar
-* (사운드 소스 가져온 웹사이트)
-* 보스 체력 800->200으로 수정
+

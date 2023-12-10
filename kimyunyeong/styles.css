@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #222;
+  }
+  
+  canvas {
+    border: 1px solid #fff;
+    background-image: url('assets/starrynight.png'); /* 배경 이미지 파일 경로로 수정해주세요 */
+    background-size: cover; /* 배경 이미지를 캔버스에 맞게 조절합니다 */
+  }
+   

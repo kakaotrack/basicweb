@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main" role="main">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+  </div>
+  
+  <!-- Stats.js CDN 추가 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+
+  <script src="app.js"></script>
+  <script>
+    // Stats.js로 프레임 속도 표시
+    var stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+
+    document.getElementById('main').appendChild(stats.domElement);
+
+    setInterval(function () {
+      stats.update();
+    }, 1000 / 60);
+
+  function gameLoop() {
+    updateGameObjects();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    drawGameObjects(ctx);
+    moveHero(); // 주인공 이동 함수 호출
+
+    requestAnimationFrame(gameLoop);
+}
+    
+// 게임 초기화 함수
+async function initGame() {
+  try {
+    canvas = document.getElementById("canvas");
+    ctx = canvas.getContext("2d");
+    const backgroundImage = await loadTexture("assets/starrynight.png");
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+
+    await initGameObjects();
+    createHero();
+    handleShooting();
+
+    // 게임 루프 시작
+    requestAnimationFrame(gameLoop);
+  } catch (error) {
+    console.error('Error in initializing the game:', error);
+  }
+}
+
+// 페이지 로딩이 완료되면 게임 초기화 실행
+window.onload = initGame;
+
+  </script>
+</body>
+</html>

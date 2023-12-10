@@ -18,4 +18,4 @@
 * 충돌 시 입자 효과
 
 ## 스크린샷
-![KakaoTalk_20231210_204249704](https://github.com/dorman9/basicweb/assets/139318504/0fac7740-0b3f-4d9e-bbe1-05f3989f2441)
+<img width="570" alt="스크린샷 2023-12-10 202646" src="https://github.com/dorman9/basicweb/assets/139318504/0f9cf9f6-8d39-4e31-878c-1307da94e0db">

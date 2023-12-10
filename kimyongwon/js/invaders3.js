@@ -322,7 +322,7 @@ function updateInvaders() {
 			width: 200,
 			phase: Math.floor(Math.random() * 250),
 			counter: 0,
-			life : 800,
+			life : 200,
 			reverse : 0,
 			state: "alive"
 		  });

@@ -29,7 +29,7 @@ Wraith 피격, 사망 시 적절한 이미지, 사운드 재생
 페이지 구성을 나눠 게임하는 화면과 설명이 적힌 화면이 동시 출력
 화면 좌측 상단 프레임레이트 출력
 
-1.14 대비 변경점
-https://www.sounds-resource.com/pc_computer/starcraftbroodwar
-(사운드 소스 가져온 웹사이트)
-보스 난이도 800->200으로 수정
+## 1.14 대비 변경점
+* https://www.sounds-resource.com/pc_computer/starcraftbroodwar
+* (사운드 소스 가져온 웹사이트)
+* 보스 난이도 800->200으로 수정

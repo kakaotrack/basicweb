@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/*기능 선택 */
+:root {
+    --ff-primary: 'Source Sans Pro', sans-serif;
+    --ff-secondary: 'Source Code Pro', monospace;
+
+    --fw-regular: 300;
+    --fw-bold: 900;
+
+    --clr-light: #fff;       /*font 밖에*/
+    --clr-dark: #303030;     /*font 문자*/
+    --clr-accent: #ff5533;
+    --fs-h1: 3rem;
+    --fs-h2: 2.25rem;
+    --fs-h3: 1.25rem;
+    --fs-body: 1rem;
+
+    --bs: 0.25em 0.25em 0.75em rgba(0,0,0,.25),
+            0.125em 0.125em 0.25em rgba(0,0,0,.15);
+}
+
+body {
+    background: var(--clr-light);
+    color: var(--clr-dark);
+    margin: 0;
+    font-family: var(--ff-primary);
+    font-size: var(--fs-body);
+    line-height: 1.6;
+}
+
+.grid-container {
+    display:grid;
+    gap: 10px; 
+    grid-template-columns: repeat(5, minmax(0,1fr));
+}
+
+.grid-header {
+    grid-column: 2 / 5;
+    grid-row: 1 / 1;
+    text-align: center;
+    font-size: var(--fs-h1);
+}
+
+.grid-instructions {
+    grid-column: 1 / 4;
+    grid-row-start: 2;
+    padding-left: 1rem;
+    font-size: var(--fs-h3);
+}
+
+/* Game Canvas */
+.game {
+    grid-column: 2 / 5;
+    grid-row: 2 / 5;
+    margin: 0 auto;
+    align-items: center; 
+}

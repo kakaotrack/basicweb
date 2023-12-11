@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+
+  <title>아 스타크래프트 하고 싶다</title>
+  <meta name="description" content="과제입니다 히히">
+  <meta name="author" content="용원 NaDa 김">
+
+  <!-- Mobile viewport optimized: h5bp.com/viewport -->
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/libs/modernizr-custom.js"></script>
+  <script src="js/libs/jquery-3.7.1.min.js"></script>
+</head>
+
+<body>
+  <header>
+
+  </header>
+  
+ 
+  <!-- 게임을 실행할 canvas -->
+  <div id="main" role="main">
+    <canvas id="game" width="600" height="800"></canvas>
+  </div>
+  
+  <!-- 비디오 재생 및 깃발을 띄울 canvas -->
+   <canvas id="intro" width="600" height="800"></canvas>
+   
+   <!-- 팀구호 동영상 -->
+   <video id = "start_video" width = "600" height = "300" onended = "video_stop();">
+		<source src = "images/team.mp4" type = "video/mp4"/>
+   </video>
+
+   
+   
+   <!-- 팀 깃발 이미지 -->
+   <img id = "start_picture" src = "images/flag.PNG" width = "600" height = "300"></img>
+   
+   <div id = "team_member"> 
+   <h2>'Space 1998'</h2>
+   제작자 : 제주대학교 컴퓨터공학전공<br>2022208020 김용원<br>
+   </div>
+   
+   <div id = "game_text"> 
+	   <h1>게임 설명</h1>
+	   단계는 총 5단계로 구성되어 있으며<br><br>
+	   단계가 올라갈수록 적의 체력이 많아지고<br><br>
+	   숫자가 증가합니다.<br><br>
+	   5단계에서는 최종 보스가 등장합니다.<br><br>
+	   배경의 별은 랜덤하게 생성됩니다.<br><br>
+	   좌,우 키로 비행기를 조종할 수 있으며 <br><br>
+	   스페이스바로 레이저를 발사합니다.<br>
+   </div>
+   
+  <footer>
+
+  </footer>
+
+  <script src="js/invaders3.js"></script>
+	
+  <script src="tools/Stats.js"></script>
+  <script>
+      var stats = new Stats();
+      stats.domElement.style.position = 'absolute';
+      stats.domElement.style.left = '0px';
+      stats.domElement.style.top = '0px';
+
+      document.getElementById('main').appendChild( stats.domElement );
+
+      setInterval( function () {
+
+        stats.update();
+
+      }, 1000 / 60 );
+  </script>
+
+</body>
+</html>
+

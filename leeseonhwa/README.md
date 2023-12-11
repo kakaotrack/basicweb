@@ -1,6 +1,6 @@
 # Space Game   
 > 우주를 배경으로 한 슈팅 게임 입니다.     
-> microsoft의 Web-Dev-For-Beginners의 코드를 수정하여 만들었습니다.        
+> microsoft의 Web-Dev-For-Beginners 레파지토리의 코드를 수정하여 만들었습니다.        
 > (https://github.com/microsoft/Web-Dev-For-Beginners)   
      
      

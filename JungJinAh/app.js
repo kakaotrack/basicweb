@@ -392,26 +392,63 @@ function displayMessage(message, color = "red") {
 
 // monster가 무한하게 스폰되게 하기 위해 수정해야 하는 부분
 function createMonsters(monsterImg) {
-  // 98 * 5     canvas.width - (98*5 /2)
   const MONSTER_TOTAL = 5;
   const MONSTER_WIDTH = MONSTER_TOTAL * 98;
   const START_X = (canvas.width - MONSTER_WIDTH) / 2;
   const STOP_X = START_X + MONSTER_WIDTH;
 
-  for (let x = START_X; x < STOP_X; x += 98) {
-    for (let y = 0; y < 50 * 7; y += 50) {
-      gameObjects.push(new Monster(x, y - 200));
+  // monster가 한줄 스폰되게 설정
+  function generateMonsters() {
+    for (let x = START_X; x < STOP_X; x += 98) {
+      for (let y = 0; y < 50 * 1; y += 50) {
+        gameObjects.push(new Monster(x, y - 200));
+      }
+    }
+
+    gameObjects.forEach((go) => {
+      go.img = monsterImg;
+    });
+  }
+
+  generateMonsters();
+
+  // player가 죽을 때까지 monster 생성을 반복
+  function checkHeroStatus() {
+    if (!hero.dead) {
+      generateMonsters();
+      setTimeout(checkHeroStatus, 4000); // 시간을 늘릴 수 있음
     }
   }
 
-  gameObjects.forEach((go) => {
-    go.img = monsterImg;
-  });
+  checkHeroStatus();
 }
 
 // 새로 추가하는 장애물 관련 코드
 // 메테오 생성 코드
-function createMeteor(meteorImg) {}
+
+function createMeteor(meteorImg) {
+  function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function createSingleMeteor() {
+    const x = getRandomInt(0, canvas.width - 50); // Adjust the width of the meteor as needed
+    const y = -50; // Start above the canvas
+
+    const meteor = new Meteor(x, y);
+    gameObjects.push(meteor);
+
+    meteor.img = meteorImg;
+  }
+
+  function generateMeteor() {
+    createSingleMeteor();
+    setTimeout(generateMeteor, getRandomInt(2000, 5000)); // Adjust the interval as needed
+  }
+
+  // Initial meteor generation
+  generateMeteor();
+}
 
 function createHero(heroImg) {
   hero.dead = false;

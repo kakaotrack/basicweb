@@ -1,0 +1,22 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+
+div {
+  position: relative;
+}
+
+p {
+  position: absolute;
+  z-index: 10;
+  color: white;
+  background-color: transparent;
+  left: 10px;
+  top: 10px;
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 14px;
+}

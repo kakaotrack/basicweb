@@ -1,0 +1,8 @@
+#gameCanvas {
+	border:2px double black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    display: block;
+    background-color: aliceblue;
+}

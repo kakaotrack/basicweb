@@ -1,0 +1,11 @@
+/* 게임 메세지 폰트 설정 */
+@font-face {
+    font-family: 'PixelifySans';
+    src: local('PixelifySans'), url('/font/PixelifySans-VariableFont_wght.ttf') format('ttf');
+}
+
+/* 캔버스 기본 설정 */
+canvas {
+    border: 1px solid #d3d3d3;
+}
+

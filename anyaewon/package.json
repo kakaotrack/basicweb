@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "type": "module",
+  "name": "spacegame",
+  "version": "1.0.0",
+  "description": "spacegame for kakaotrack",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node app.js"
+},
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,50 @@
+#main {
+  width: 61em;
+  max-width: 100%;
+  zoom: 1;
+  margin: auto;
+}
+
+#game {
+  margin: auto;
+  display: block;
+  border: 1px solid #ccc;
+  position : absolute;
+  top : 10px;
+  left : 100px;
+}
+
+#intro {
+  display: block;
+  border: 1px solid black;
+  position : absolute;
+  top : 0px;
+  left : 100px;
+}
+
+#start_video {
+	position : absolute;
+	top : 20px;
+	left : 100px;
+}
+
+#start_picture {
+	position : absolute;
+  top : 250px;
+  left : 100px;
+}
+
+#team_member {
+  position : absolute;
+  top : 600px;
+  left : 730px;	
+  font-weight : bold; 
+}
+
+#game_text {
+  position : absolute;
+  top : 100;
+  left : 730px;	
+  font-weight : bold; 
+  font-size : 20px;
+}

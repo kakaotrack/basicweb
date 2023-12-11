@@ -1,5 +1,7 @@
 # ** Gallague (Beta Version)**
 
+# 발표 희망
+
 **기초웹개발론 프로젝트**
 
 - [Gallague](https://gallague-6e78212e76a0.herokuapp.com/) <- Link

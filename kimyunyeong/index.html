@@ -9,56 +9,54 @@
 <body>
   <div id="main" role="main">
     <canvas id="canvas" width="1024" height="768"></canvas>
+    <div id="gameOverScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+      <p>게임 오버!</p>
+      <button id="restartButton" style="margin-top: 10px;">게임 재시작</button>
+    </div>
   </div>
   
   <!-- Stats.js CDN 추가 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
-
   <script src="app.js"></script>
   <script>
+    let gameLoopId;
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const restartButton = document.getElementById('restartButton');
     // Stats.js로 프레임 속도 표시
-    var stats = new Stats();
+    const stats = new Stats();
     stats.domElement.style.position = 'absolute';
     stats.domElement.style.left = '0px';
     stats.domElement.style.top = '0px';
 
     document.getElementById('main').appendChild(stats.domElement);
 
-    setInterval(function () {
+    setInterval(() => {
       stats.update();
     }, 1000 / 60);
 
-  function gameLoop() {
-    updateGameObjects();
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawGameObjects(ctx);
-    moveHero(); // 주인공 이동 함수 호출
+    // 페이지 로딩이 완료되면 게임 초기화 실행
+    window.onload = () => {
+      // resetCanvas();
+      initGame(); // initGame 함수 호출
+      handleEvents(); 
+      gameLoop(); // gameLoop를 초기에 실행하도록 수정
+    };
 
-    requestAnimationFrame(gameLoop);
-}
     
-// 게임 초기화 함수
-async function initGame() {
-  try {
-    canvas = document.getElementById("canvas");
-    ctx = canvas.getContext("2d");
-    const backgroundImage = await loadTexture("assets/starrynight.png");
-    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
 
-    await initGameObjects();
-    createHero();
-    handleShooting();
+    restartButton.addEventListener('click', () => {
+    resetCanvas(); // 캔버스 리셋
+    initGame(); // initGame 함수 호출
+    isGameOver = false;
+    gameOverScreen.style.display = 'none';
+    // cancelAnimationFrame(gameLoopId); // 현재의 게임 루프를 정지
 
-    // 게임 루프 시작
-    requestAnimationFrame(gameLoop);
-  } catch (error) {
-    console.error('Error in initializing the game:', error);
-  }
-}
+    // gameObjects 배열에서 hero 객체를 찾기
+    const heroIndex = gameObjects.findIndex(go => go === hero);
 
-// 페이지 로딩이 완료되면 게임 초기화 실행
-window.onload = initGame;
+    gameObjects = [];
 
+  });
   </script>
 </body>
 </html>

@@ -5,11 +5,25 @@ body {
     justify-content: center;
     height: 100vh;
     background-color: #222;
+    overflow: hidden;
   }
-  
-  canvas {
+
+  #main {
+    position: relative;
+  }
+
+  #canvas {
     border: 1px solid #fff;
     background-image: url('assets/starrynight.png'); /* 배경 이미지 파일 경로로 수정해주세요 */
     background-size: cover; /* 배경 이미지를 캔버스에 맞게 조절합니다 */
   }
-   
+
+  #merry-christmas {
+    height: 200px;
+    top: 10px; /* 캔버스 위쪽에 위치하도록 조정합니다. */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 24px;
+    color: red;
+  }

@@ -218,7 +218,7 @@ function draw() {
     requestAnimationFrame(draw);
 
     // 라운드 업데이트 조건 확인
-    if (score >= 1000 * round) {
+    if (score == 1000 * round) {
         updateRound();
     }
 }

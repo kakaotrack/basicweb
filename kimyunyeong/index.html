@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas Game</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="main" role="main">
+    <canvas id="canvas" width="1024" height="768"></canvas>
+    <div id="gameOverScreen" style="display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center;">
+      <p>게임 오버!</p>
+      <button id="restartButton" style="margin-top: 10px;">게임 재시작</button>
+    </div>
+  </div>
+  
+  <!-- Stats.js CDN 추가 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    let gameLoopId;
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const restartButton = document.getElementById('restartButton');
+    // Stats.js로 프레임 속도 표시
+    const stats = new Stats();
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0px';
+    stats.domElement.style.top = '0px';
+
+    document.getElementById('main').appendChild(stats.domElement);
+
+    setInterval(() => {
+      stats.update();
+    }, 1000 / 60);
+
+    // 페이지 로딩이 완료되면 게임 초기화 실행
+    window.onload = () => {
+      // resetCanvas();
+      initGame(); // initGame 함수 호출
+      handleEvents(); 
+      gameLoop(); // gameLoop를 초기에 실행하도록 수정
+    };
+
+    
+
+    restartButton.addEventListener('click', () => {
+    resetCanvas(); // 캔버스 리셋
+    initGame(); // initGame 함수 호출
+    isGameOver = false;
+    gameOverScreen.style.display = 'none';
+    // cancelAnimationFrame(gameLoopId); // 현재의 게임 루프를 정지
+
+    // gameObjects 배열에서 hero 객체를 찾기
+    const heroIndex = gameObjects.findIndex(go => go === hero);
+
+    gameObjects = [];
+
+  });
+  </script>
+</body>
+</html>
